@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="loyalty_reward_view_form_pos_block_promo" model="ir.ui.view">
+        <field name="name">loyalty.reward.form.pos.block.promo</field>
+        <field name="model">loyalty.reward</field>
+        <field name="inherit_id" ref="loyalty.loyalty_reward_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='discount_applicability']" position="after">
+                <field
+                    name="pos_block_promo"
+                    invisible="reward_type != 'discount' or discount_applicability != 'specific'"
+                />
+                <field
+                    name="pos_block_qty"
+                    invisible="reward_type != 'discount' or discount_applicability != 'specific' or not pos_block_promo"
+                    required="pos_block_promo"
+                />
+                <field
+                    name="pos_block_pay_qty"
+                    invisible="reward_type != 'discount' or discount_applicability != 'specific' or not pos_block_promo"
+                    required="pos_block_promo"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
