@@ -1,0 +1,1 @@
+# pos_promo_by_blocks
